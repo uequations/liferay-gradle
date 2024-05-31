@@ -32,7 +32,7 @@ stages:
       displayName: Build Docker image
       inputs:
         gradleWrapperFile: 'gradlew'
-        tasks: 'buildDockerImage'
+        tasks: 'clean buildDockerImage'
         publishJUnitResults: true
         testResultsFiles: '**/TEST-*.xml'
         javaHomeOption: 'JDKVersion'
