@@ -41,6 +41,7 @@ stages:
       displayName: Build Docker image
       inputs:
         gradleWrapperFile: 'gradlew'
+        options: '--stacktrace'
         tasks: 'buildDockerImage'
         publishJUnitResults: true
         testResultsFiles: '**/TEST-*.xml'
