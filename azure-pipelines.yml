@@ -29,10 +29,19 @@ stages:
       vmImage: $(vmImageName)
     steps:
     - task: Gradle@3
+      inputs:
+        gradleWrapperFile: 'gradlew'
+        tasks: 'clean'
+        publishJUnitResults: true
+        testResultsFiles: '**/TEST-*.xml'
+        javaHomeOption: 'JDKVersion'
+        sonarQubeRunAnalysis: false
+        spotBugsAnalysis: false
+    - task: Gradle@3
       displayName: Build Docker image
       inputs:
         gradleWrapperFile: 'gradlew'
-        tasks: 'clean buildDockerImage'
+        tasks: 'buildDockerImage'
         publishJUnitResults: true
         testResultsFiles: '**/TEST-*.xml'
         javaHomeOption: 'JDKVersion'
